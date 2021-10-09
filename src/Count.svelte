@@ -17,10 +17,12 @@
 </script>
 
 <style lang="scss">
+    // $primary-color: #336eaa;
+    @import './src/base';
     button {
         color: red;
-        // b {
-        //     color: blue;
-        // }
+        b {
+            color: $primary-color;
+        }
     }
 </style>

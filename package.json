@@ -1,17 +1,18 @@
 {
-  "private": false,
-  "scripts": {
-    "test": "uvu tests -r esm -r tests/setup/register -i setup"
-  },
-  "devDependencies": {
-    "@testing-library/svelte": "^3.0.3",
-    "cosmiconfig": "^7.0.1",
-    "esm": "3.2.25",
-    "jsdom": "16.3.0",
-    "sass": "^1.42.1",
-    "svelte": "^3.43.1",
-    "svelte-preprocess": "^4.9.8",
-    "typescript": "^3.9.10",
-    "uvu": "^0.2.3"
-  }
+	"private": false,
+	"scripts": {
+		"test": "uvu tests -r esm -r tests/setup/register -i setup"
+	},
+	"devDependencies": {
+		"@testing-library/svelte": "^3.0.3",
+		"cosmiconfig": "^7.0.1",
+		"esm": "3.2.25",
+		"jsdom": "^18.0.0",
+		"node-sass": "^6.0.1",
+		"pirates": "^4.0.1",
+		"svelte": "^3.43.1",
+		"svelte-preprocess": "^4.9.8",
+		"typescript": "^4.4.3",
+		"uvu": "^0.5.2"
+	}
 }

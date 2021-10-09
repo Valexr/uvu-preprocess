@@ -22,7 +22,7 @@ test('It pause the timer', async () => {
 	assert.is($input.value, '5')
 })
 
-test('should render with "5" by default', () => {
+test('should render with "5" by default', async () => {
 	const { getByDisplayValue } = render(Count);
 	const $input = getByDisplayValue('5')
 	assert.type($input.value, 'string')
@@ -33,7 +33,7 @@ test('should render with "5" by default', () => {
 	// );
 });
 
-test('should accept custom `count` prop', () => {
+test('should accept custom `count` prop', async () => {
 	// const { container } = ENV.render(Count, { count: 99 });
 	const { getByDisplayValue } = render(Count, { count: 99 });
 	const $input = getByDisplayValue('99')
