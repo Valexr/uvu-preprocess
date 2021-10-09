@@ -1,5 +1,5 @@
 {
-  "private": true,
+  "private": false,
   "scripts": {
     "test": "uvu tests -r esm -r tests/setup/register -i setup"
   },
