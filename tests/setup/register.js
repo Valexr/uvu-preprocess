@@ -1,7 +1,9 @@
-const { parse } = require('path');
-const { execSync } = require('child_process');
-const { getSvelteConfig } = require('./svelteconfig.js');
-const { compile } = require('svelte/compiler')
+import { parse } from 'path'
+import { execSync } from 'child_process'
+import { compile } from 'svelte/compiler'
+import { addHook } from 'pirates'
+import { getSvelteConfig } from './svelteconfig.js'
+
 
 const useTransformer = (options = {}) => (source, filename) => {
 	const { debug, preprocess, rootMode } = options;
@@ -20,7 +22,7 @@ const useTransformer = (options = {}) => (source, filename) => {
 	}
 };
 
-function transform(hook, source, filename) {
+function transform(source, filename) {
 	const { name } = parse(filename);
 
 	const preprocessed = useTransformer({ preprocess: true })(source, filename);
@@ -37,16 +39,9 @@ function transform(hook, source, filename) {
 		console.warn(warning.frame);
 	});
 
-	return hook(js.code, filename);
+	return js.code;
 }
 
-const loadJS = require.extensions['.js'];
+const handleSvelte = (source, filename) => transform(source, filename)
 
-// Runtime DOM hook for require("*.svelte") files
-// Note: for SSR/Node.js hook, use `svelte/register`
-require.extensions['.svelte'] = function (mod, filename) {
-	const orig = mod._compile.bind(mod);
-	mod._compile = (code) => transform(orig, code, filename)
-	loadJS(mod, filename);
-};
-
+addHook(handleSvelte, { exts: ['.svelte'] })

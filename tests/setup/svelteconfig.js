@@ -1,15 +1,15 @@
-const fs = require('fs')
-const path = require('path')
+const { existsSync } = require('fs')
+const { dirname, resolve, join } = require('path')
 
 const configFilename = 'svelte.config.js'
 
-exports.getSvelteConfig = (rootMode, filename) => {
+export function getSvelteConfig(rootMode, filename) {
 	const configDir = rootMode === 'upward'
-		? getConfigDir(path.dirname(filename))
+		? getConfigDir(dirname(filename))
 		: process.cwd()
-	const configFile = path.resolve(configDir, configFilename)
+	const configFile = resolve(configDir, configFilename)
 
-	if (!fs.existsSync(configFile)) {
+	if (!existsSync(configFile)) {
 		throw Error(`Could not find ${configFilename}`)
 	}
 
@@ -17,11 +17,11 @@ exports.getSvelteConfig = (rootMode, filename) => {
 }
 
 const getConfigDir = (searchDir) => {
-	if (fs.existsSync(path.join(searchDir, configFilename))) {
+	if (existsSync(join(searchDir, configFilename))) {
 		return searchDir
 	}
 
-	const parentDir = path.resolve(searchDir, '..')
+	const parentDir = resolve(searchDir, '..')
 	return parentDir !== searchDir
 		? getConfigDir(parentDir)
 		: searchDir // Stop walking at filesystem root

@@ -1,6 +1,6 @@
 import { test } from 'uvu';
 import * as assert from 'uvu/assert';
-import * as ENV from './setup/env';
+import * as ENV from './setup/env.js';
 import { render, fireEvent } from '@testing-library/svelte'
 
 // Relies on `setup/register`
@@ -48,7 +48,7 @@ test('should accept custom `count` prop', async () => {
 test('should increment count after `button#incr` click', async () => {
 	// const { getByDisplayValue } = render(Count, { count: 100 });
 	const { component, container } = ENV.render(Count, { count: 100 });
-	console.log(component.$$.ctx, component, container)
+	// console.log(component.$$.ctx, component, container)
 	const $input = container.querySelector('input')
 	// assert.is($input.value, '99')
 	assert.snapshot(

@@ -1,4 +1,4 @@
-const sveltePreprocess = require("svelte-preprocess");
+const sveltePreprocess = require('svelte-preprocess');
 const options = {
 	sourceMap: true,
 	scss: {
