@@ -1,7 +1,7 @@
 import { existsSync } from 'fs'
 import { dirname, resolve, join } from 'path'
 
-const configFilename = 'svelte.config.mjs'
+const configFilename = 'svelte.config.js'
 
 export function getSvelteConfig(rootMode, filename) {
 	const configDir = rootMode === 'upward'
