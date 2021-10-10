@@ -8,7 +8,7 @@ const processSync = (options = {}) => (source, filename) => {
 	let processed = source;
 	if (preprocess) {
 		const svelteConfig = getSvelteConfig(rootMode, filename);
-		const preprocessor = require.resolve('./preprocess.mjs');
+		const preprocessor = require.resolve('./preprocess.js');
 		processed = execSync(
 			`node --unhandled-rejections=strict --abort-on-uncaught-exception "${preprocessor}"`,
 			{ env: { PATH: process.env.PATH, source, filename, svelteConfig } }).toString();
