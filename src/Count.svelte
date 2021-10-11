@@ -1,28 +1,30 @@
-<button id="decr" on:click={decrement}>--</button>
-<!-- svelte-ignore missing-declaration -->
-<input value={count} />
-<button id="incr" on:click={increment}>++</button>
-
 <script lang="ts">
-    type CountResult = number;
-    export let count: CountResult = 5;
+	import Button from "./Button/Button.svelte";
 
-    function increment(): void {
-        count++;
-    }
+	type CountResult = number;
+	export let count: CountResult = 5;
 
-    function decrement(): void {
-        count--;
-    }
+	function increment(): void {
+		count++;
+	}
+
+	function decrement(): void {
+		count--;
+	}
 </script>
 
+<Button id="decr" on:click={decrement}>--</Button>
+<!-- svelte-ignore missing-declaration -->
+<input value={count} />
+<Button id="incr" on:click={increment}>++</Button>
+
 <style lang="scss">
-    // $primary-color: #336eaa;
-    @import './src/base';
-    button {
-        color: red;
-        b {
-            color: $primary-color;
-        }
-    }
+	// $primary-color: #336eaa;
+	@import "./src/base";
+	button {
+		color: red;
+		b {
+			color: $primary-color;
+		}
+	}
 </style>
